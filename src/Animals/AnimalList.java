@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class AnimalList implements List <Animal> {
    private Animal list[];
    
+   @Override
    public boolean add(Animal t) {
         int max = list.length;
         for (int i = 0; i < max; i++) {
@@ -23,6 +24,7 @@ public class AnimalList implements List <Animal> {
         return false;
     }
     
+   @Override
     public boolean remove(Animal t) {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == t) {
@@ -33,10 +35,12 @@ public class AnimalList implements List <Animal> {
         return false;
     }
     
+    @Override
     public void showAll() {
         Arrays.toString(list);
     }
     
+    @Override
     public Animal find(Object id) {
         for (int i = 0; i < list.length; i++) {
             if (list[i].getId() == id) {
