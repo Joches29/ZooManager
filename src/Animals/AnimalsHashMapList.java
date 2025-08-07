@@ -6,15 +6,16 @@ package Animals;
 
 import Lists.List;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  *
  * @author rodol
  */
-public class AnimailsHashMapList implements List <Animal> {
+public class AnimalsHashMapList implements List <Animal> {
     HashMap<String, Animal> map;
 
-    public AnimailsHashMapList() {
+    public AnimalsHashMapList() {
         this.map = new HashMap<>();
     }
 
@@ -41,6 +42,14 @@ public class AnimailsHashMapList implements List <Animal> {
     @Override
     public void showAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public HashSet getSpecies() {
+        HashSet<String> set = new HashSet<>();
+        for (Animal animal : map.values()) {
+            set.add(animal.getSpecies());
+        }
+        return set;
     }
 
 }
