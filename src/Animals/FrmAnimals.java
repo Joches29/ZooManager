@@ -323,17 +323,35 @@ public class FrmAnimals extends javax.swing.JFrame {
         String zone = txtZone.getSelectedItem().toString();
 
         animal = new Animal(id, name, specie, date);
-        
-        if(!list.add(animal)){
+
+        if (!list.add(animal)) {
             JOptionPane.showMessageDialog(this, "No se agrego el registro");
             return;
         }
         UtilGui.showMessage(this, "Registro agregado " + animal.getName(), " Agregado");
         showSpecies();
     }
-    
-    public void update(){
+
+    public void update() {
+        if (!validateRequiere()) {
+            UtilGui.showErrorMessage(this, "Faltan datos requeridos", "Error");
+        }
+
+        Zone zone = (Zone) txtZone.getSelectedItem();
         
+        
+        animal.setZone(zone);
+    }
+    
+    public void delete(){
+        if (animal == null){
+            UtilGui.showErrorMessage(this, "Debe especificar el animal a eliminar", "Error");
+            return;
+        }
+        if(!list.remove(animal)){
+            JOptionPane.showMessageDialog(this, "No se eliino el registro");
+        }
+        clear();
     }
 
     
