@@ -110,9 +110,12 @@ public class FrmVisitor extends javax.swing.JFrame {
             }
         });
 
-        txtPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        try {
+            txtPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         txtPhone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPhone.setText("Opcional");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
