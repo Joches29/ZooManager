@@ -44,7 +44,7 @@ public class AnimalsHashMapList implements List <Animal> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public HashSet getSpecies() {
+    public HashSet<String> getSpecies() {
         HashSet<String> set = new HashSet<>();
         for (Animal animal : map.values()) {
             set.add(animal.getSpecies());
