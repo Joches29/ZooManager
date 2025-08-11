@@ -11,7 +11,16 @@ import javax.swing.DefaultComboBoxModel;
  * @author autoa
  */
 public class FrmAnimals extends javax.swing.JFrame {
-    AnimalsHashMapList list;
+    private AnimalsHashMapList list;
+    private Animal animal;
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setList(AnimalsHashMapList list) {
+        this.list = list;
+    }
     
     /**
      * Creates new form FrmAnimals

@@ -4,17 +4,48 @@
  */
 package Animals;
 
+import Utils.UtilDate;
+import java.util.HashMap;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author autoa
  */
 public class FrmSearchAnimal extends javax.swing.JFrame {
+    private AnimalsHashMapList list;
+    private Animal animal;
+    
+    private DefaultTableModel model;
+    private TableRowSorter<DefaultTableModel> sorter;
+    private RowFilter<DefaultTableModel, Object> rowFilter;
 
+    public void setList(AnimalsHashMapList list) {
+        this.list = list;
+        loadTable();
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+    
+    
     /**
      * Creates new form FrmSearchAnimal
      */
     public FrmSearchAnimal() {
         initComponents();
+    }
+    
+    private void loadTable() {
+        HashMap<String, Animal> map = list.getMap();
+        model.setRowCount(0);
+        for (Animal animal : map.values()) {
+            Object[] data = {animal.getId(), animal.getName(), animal.getSpecies(), UtilDate.toString(animal.getBirthDate()), animal.getZone()};
+            model.addRow(data);
+        }
     }
 
     /**
@@ -41,6 +72,11 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
         jLabel1.setText("Buscar Animal");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,8 +185,12 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
