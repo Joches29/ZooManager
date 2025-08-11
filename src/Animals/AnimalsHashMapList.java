@@ -52,4 +52,8 @@ public class AnimalsHashMapList implements List <Animal> {
         return set;
     }
 
+    public HashMap<String, Animal> getMap() {
+        return map;
+    }
+
 }

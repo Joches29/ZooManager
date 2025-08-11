@@ -33,4 +33,8 @@ public abstract class UtilDate {
     public static String toString(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
+
+    public static Object toString(LocalDate birthDate) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
