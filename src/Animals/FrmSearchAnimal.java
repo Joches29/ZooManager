@@ -27,7 +27,7 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -40,7 +40,7 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Animal");
 
-        btnBuscar.setText("Buscar");
+        btnAceptar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,15 +60,32 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
                 "Id", "Nombre", "Especie", "Fecha de Nacimiento", "Zona"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false, true
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblAnimals.setColumnSelectionAllowed(true);
+        tblAnimals.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblAnimals);
+        tblAnimals.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tblAnimals.getColumnModel().getColumnCount() > 0) {
+            tblAnimals.getColumnModel().getColumn(0).setResizable(false);
+            tblAnimals.getColumnModel().getColumn(1).setResizable(false);
+            tblAnimals.getColumnModel().getColumn(2).setResizable(false);
+            tblAnimals.getColumnModel().getColumn(3).setResizable(false);
+            tblAnimals.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,7 +116,7 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(198, 198, 198)
-                                .addComponent(btnBuscar)
+                                .addComponent(btnAceptar)
                                 .addGap(165, 165, 165)
                                 .addComponent(btnCancelar))
                             .addGroup(layout.createSequentialGroup()
@@ -123,7 +140,7 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
+                    .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
                 .addContainerGap())
         );
@@ -171,7 +188,7 @@ public class FrmSearchAnimal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
