@@ -5,13 +5,29 @@
 package Animals;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author autoa
  */
 public class FrmAnimals extends javax.swing.JFrame {
-    AnimalsHashMapList list;
+    private AnimalsHashMapList list;
+    private Animal animal;
+    
+    private DefaultTableModel model;
+    private TableRowSorter<DefaultTableModel> sorter;
+    private RowFilter<DefaultTableModel, Object> rowFilter;
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setList(AnimalsHashMapList list) {
+        this.list = list;
+    }
     
     /**
      * Creates new form FrmAnimals
