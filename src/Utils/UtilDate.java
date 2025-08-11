@@ -23,4 +23,8 @@ public abstract class UtilDate {
     public static boolean isLegalAge(LocalDate date){
         return calculateAge(date)>=18;
     }
+
+    public static Object toString(LocalDate birthDate) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

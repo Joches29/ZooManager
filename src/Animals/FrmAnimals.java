@@ -5,9 +5,6 @@
 package Animals;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -16,10 +13,6 @@ import javax.swing.table.TableRowSorter;
 public class FrmAnimals extends javax.swing.JFrame {
     private AnimalsHashMapList list;
     private Animal animal;
-    
-    private DefaultTableModel model;
-    private TableRowSorter<DefaultTableModel> sorter;
-    private RowFilter<DefaultTableModel, Object> rowFilter;
 
     public Animal getAnimal() {
         return animal;
