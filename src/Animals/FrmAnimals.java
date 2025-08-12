@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author autoa
@@ -354,6 +355,11 @@ public class FrmAnimals extends javax.swing.JFrame {
         clear();
     }
 
+    public void search(){
+        FrmSearchAnimal frmSearch = new FrmSearcAnimal(this,true);
+        frmSearch.setList(list);
+        frmSearch.setVisible(true);
+    }
     
 
     /**
