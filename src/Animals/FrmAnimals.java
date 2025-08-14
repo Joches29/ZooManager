@@ -356,7 +356,7 @@ public class FrmAnimals extends javax.swing.JFrame {
     }
 
     public void search(){
-        FrmSearchAnimal frmSearch = new FrmSearcAnimal(this,true);
+        DiaSearchAnimals frmSearch = new DiaSearchAnimals(this,true);
         frmSearch.setList(list);
         frmSearch.setVisible(true);
     }
