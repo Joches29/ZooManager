@@ -100,7 +100,7 @@ public class FrmAnimals extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha de Nacimiento");
 
-        txtBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/YYYY"))));
+        txtBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         txtBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBirthDateActionPerformed(evt);
@@ -270,7 +270,7 @@ public class FrmAnimals extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+        showData();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -356,9 +356,21 @@ public class FrmAnimals extends javax.swing.JFrame {
     }
 
     public void search(){
-        FrmSearchAnimal frmSearch = new FrmSearcAnimal(this,true);
+        FrmSearchAnimal frmSearch = new FrmSearchAnimal(this,true);
         frmSearch.setList(list);
         frmSearch.setVisible(true);
+    }
+    
+    private void showData(){
+        if (animal == null){
+            UtilGui.showErrorMessage(this, "Debe especificar el animal a eliminar", "Error");
+            return;
+        }
+        txtId.setText(animal.getId());
+        txtName.setText(animal.getName());
+        txtBirthDate.setText(UtilDate.toString(animal.getBirthDate()));
+        txtZone.setSelectedItem(animal.getZone());
+        txtSpecies.setSelectedItem(animal.getSpecies());
     }
     
 
