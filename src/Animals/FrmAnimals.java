@@ -25,6 +25,9 @@ public class FrmAnimals extends javax.swing.JFrame {
     public FrmAnimals() {
         initComponents();
         list = new AnimalsHashMapList();
+        list.add(new Animal("M-0001","Marito","Mono",LocalDate.now()));
+        list.add(new Animal("M-0002","Luis","Mono",LocalDate.now()));
+        list.add(new Animal("C-0001","Carlos","Cocodrilo",LocalDate.now()));
         showZones();
         showSpecies();
     }
@@ -266,7 +269,7 @@ public class FrmAnimals extends javax.swing.JFrame {
     }//GEN-LAST:event_txtZoneActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -350,7 +353,7 @@ public class FrmAnimals extends javax.swing.JFrame {
             return;
         }
         if(!list.remove(animal)){
-            JOptionPane.showMessageDialog(this, "No se eliino el registro");
+            JOptionPane.showMessageDialog(this, "No se elimino el registro");
         }
         clear();
     }

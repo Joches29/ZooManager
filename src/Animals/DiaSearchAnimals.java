@@ -117,6 +117,7 @@ public class DiaSearchAnimals extends javax.swing.JDialog {
         tblAnimals.setColumnSelectionAllowed(true);
         tblAnimals.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblAnimals);
+        tblAnimals.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,6 +134,12 @@ public class DiaSearchAnimals extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        txtFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,6 +193,11 @@ public class DiaSearchAnimals extends javax.swing.JDialog {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterActionPerformed
+        rowFilter = RowFilter.regexFilter("(?i)" + txtFilter.getText());
+        sorter.setRowFilter(rowFilter);
+    }//GEN-LAST:event_txtFilterActionPerformed
 
     /**
      * @param args the command line arguments
