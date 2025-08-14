@@ -5,6 +5,7 @@
 package Animals;
 
 import Utils.UtilDate;
+import Utils.UtilGui;
 import java.util.HashMap;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -187,6 +188,14 @@ public class DiaSearchAnimals extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        int row =tblAnimals.getSelectedRow();
+        if (row==-1){
+            UtilGui.showErrorMessage(this, "Debe seleccionar un animal", "Error");
+            return;
+        }
+        String id=String.valueOf(tblAnimals.getValueAt(row,0));
+        animal=list.find(id);
+        setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
