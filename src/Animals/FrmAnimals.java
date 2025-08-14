@@ -362,6 +362,10 @@ public class FrmAnimals extends javax.swing.JFrame {
         DiaSearchAnimals frmSearch = new DiaSearchAnimals(this,true);
         frmSearch.setList(list);
         frmSearch.setVisible(true);
+        animal = frmSearch.getAnimal();
+        if(animal != null){
+            showData();
+        }
     }
     
     private void showData(){
