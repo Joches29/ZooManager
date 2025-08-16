@@ -4,18 +4,19 @@
  */
 package Animals;
 
+import GUI.Gui;
 import Utils.UtilDate;
 import Utils.UtilGui;
 import java.time.LocalDate;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author autoa
  */
-public class FrmAnimals extends javax.swing.JFrame {
+public class FrmAnimals extends javax.swing.JFrame implements Gui {
+
     private AnimalsHashMapList list;
     private Animal animal;
 
@@ -25,9 +26,6 @@ public class FrmAnimals extends javax.swing.JFrame {
     public FrmAnimals() {
         initComponents();
         list = new AnimalsHashMapList();
-        list.add(new Animal("M-0001","Marito","Mono",LocalDate.now()));
-        list.add(new Animal("M-0002","Luis","Mono",LocalDate.now()));
-        list.add(new Animal("C-0001","Carlos","Cocodrilo",LocalDate.now()));
         showZones();
         showSpecies();
     }
@@ -304,6 +302,7 @@ public class FrmAnimals extends javax.swing.JFrame {
         txtSpecies.setModel(model);
     }
 
+    @Override
     public void clear() {
         txtId.setText("");
         txtName.setText("");
@@ -312,10 +311,12 @@ public class FrmAnimals extends javax.swing.JFrame {
         txtSpecies.setSelectedIndex(-1);
     }
 
-    private boolean validateRequiere() {
+    @Override
+    public boolean validateRequiere() {
         return UtilGui.validateRequiere(txtId, txtName, txtBirthDate, txtSpecies, txtZone);
     }
 
+    @Override
     public void save() {
         if (!validateRequiere()) {
             UtilGui.showErrorMessage(this, "Faltan datos requeridos", "Error");
@@ -336,40 +337,43 @@ public class FrmAnimals extends javax.swing.JFrame {
         showSpecies();
     }
 
+    @Override
     public void update() {
         if (!validateRequiere()) {
             UtilGui.showErrorMessage(this, "Faltan datos requeridos", "Error");
         }
 
         Zone zone = (Zone) txtZone.getSelectedItem();
-        
-        
+
         animal.setZone(zone);
     }
-    
-    public void delete(){
-        if (animal == null){
+
+    @Override
+    public void delete() {
+        if (animal == null) {
             UtilGui.showErrorMessage(this, "Debe especificar el animal a eliminar", "Error");
             return;
         }
-        if(!list.remove(animal)){
+        if (!list.remove(animal)) {
             JOptionPane.showMessageDialog(this, "No se elimino el registro");
         }
         clear();
     }
 
-    public void search(){
-        DiaSearchAnimals frmSearch = new DiaSearchAnimals(this,true);
+    @Override
+    public void search() {
+        DiaSearchAnimals frmSearch = new DiaSearchAnimals(this, true);
         frmSearch.setList(list);
         frmSearch.setVisible(true);
         animal = frmSearch.getAnimal();
-        if(animal != null){
+        if (animal != null) {
             showData();
         }
     }
-    
-    private void showData(){
-        if (animal == null){
+
+    @Override
+    public void showData() {
+        if (animal == null) {
             UtilGui.showErrorMessage(this, "Debe especificar el animal a eliminar", "Error");
             return;
         }
@@ -379,7 +383,6 @@ public class FrmAnimals extends javax.swing.JFrame {
         txtZone.setSelectedItem(animal.getZone());
         txtSpecies.setSelectedItem(animal.getSpecies());
     }
-    
 
     /**
      * @param args the command line arguments
