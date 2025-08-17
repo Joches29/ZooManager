@@ -19,6 +19,10 @@ public class ZookeeperHashMapList implements List <Zookeeper> {
         this.map = new HashMap<>();
     }
 
+    public HashMap<String, Zookeeper> getMap() {
+        return map;
+    }
+
     @Override
     public boolean add(Zookeeper t) {
         if (map.containsKey(t.getId())) {
