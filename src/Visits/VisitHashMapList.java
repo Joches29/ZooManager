@@ -46,5 +46,9 @@ public class VisitHashMapList implements List <Visit> {
     public void showAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public HashMap<String, Visit> getMap() {
+        return map;
+    }
     
 }

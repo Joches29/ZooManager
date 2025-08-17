@@ -210,10 +210,9 @@ public class FrmVisitor extends javax.swing.JFrame implements Gui{
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAdd)
-                        .addComponent(btnDelete)
-                        .addComponent(btnSearch))
+                    .addComponent(btnDelete)
+                    .addComponent(btnSearch)
+                    .addComponent(btnAdd)
                     .addComponent(btnClear)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
