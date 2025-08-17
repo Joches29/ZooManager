@@ -5,10 +5,13 @@
 package Utils;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 import javax.swing.text.JTextComponent;
 
 /**
@@ -58,5 +61,10 @@ public class UtilGui {
     public static void showErrorMessage(Component component, Object message, String title) {
         showMessage(component, message, title, JOptionPane.ERROR_MESSAGE);
     }
-   
+    
+    public static void filterRows(RowFilter rowFilter, JTextComponent txt, TableRowSorter sorter) {
+        rowFilter = RowFilter.regexFilter("(?i)" + txt.getText());
+        sorter.setRowFilter(rowFilter);
+    }
+
 }

@@ -4,17 +4,26 @@
  */
 package Persons.Visitors;
 
+import GUI.Gui;
+import Utils.UtilDate;
+import Utils.UtilGui;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rodol
  */
-public class FrmVisitor extends javax.swing.JFrame {
-
+public class FrmVisitor extends javax.swing.JFrame implements Gui{
+    private Visitor visitor;
+    private VisitorHashMapList list;
     /**
      * Creates new form FrmVisitor
      */
     public FrmVisitor() {
         initComponents();
+         list = new VisitorHashMapList();
+         list.add(new Visitor("1", "Juan", LocalDate.now(),"85-79-73-26"));
     }
 
     /**
@@ -41,6 +50,7 @@ public class FrmVisitor extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         txtPhone = new javax.swing.JFormattedTextField();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,25 +95,35 @@ public class FrmVisitor extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha de Nacimiento");
 
-        txtBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/YYYY"))));
+        txtBirthDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         txtBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBirthDateActionPerformed(evt);
             }
         });
 
-        btnClear.setText("Limpiar");
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit-clear.png"))); // NOI18N
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
-        btnAdd.setText("Agregar");
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add (16).png"))); // NOI18N
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
-        btnDelete.setText("Eliminar");
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/stock_delete.png"))); // NOI18N
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
-        btnSearch.setText("Buscar");
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
@@ -111,43 +131,42 @@ public class FrmVisitor extends javax.swing.JFrame {
         });
 
         try {
-            txtPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            txtPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         txtPhone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/update-manager.png"))); // NOI18N
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(btnClear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel5)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jLabel5)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(jLabel4))))
+                                .addGap(30, 30, 30)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel4)))
+                        .addContainerGap(60, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(jLabel1)
@@ -156,8 +175,20 @@ public class FrmVisitor extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate)
+                .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,13 +208,14 @@ public class FrmVisitor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAdd)
+                        .addComponent(btnDelete)
+                        .addComponent(btnSearch))
                     .addComponent(btnClear)
-                    .addComponent(btnAdd)
-                    .addComponent(btnDelete)
-                    .addComponent(btnSearch))
-                .addGap(0, 6, Short.MAX_VALUE))
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,7 +235,7 @@ public class FrmVisitor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,13 +254,104 @@ public class FrmVisitor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBirthDateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+        search();
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clear();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        save();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        update();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    @Override
+    public void clear() {
+        txtId.setText("");
+        txtName.setText("");
+        txtBirthDate.setText("");
+        txtPhone.setText("");
+    }
+
+    @Override
+    public boolean validateRequiere() {
+        return UtilGui.validateRequiere(txtId, txtName, txtBirthDate, txtPhone);
+    }
+
+    @Override
+    public void save() {
+       if (!validateRequiere()) {
+            UtilGui.showErrorMessage(this, "Faltan datos requeridos", "Error");
+        }
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String phone = txtPhone.getText();
+        LocalDate date = UtilDate.toLocalDate(txtBirthDate.getText());
+
+
+        visitor = new Visitor(id, name, date, phone.isEmpty() ? null : phone);
+
+        if (!list.add(visitor)) {
+            JOptionPane.showMessageDialog(this, "No se agrego el registro");
+            return;
+        }
+        UtilGui.showMessage(this, "Registro agregado " + visitor.getName(), " Agregado");
+    }
+
+    @Override
+    public void update() {
+         if (!validateRequiere()) {
+            UtilGui.showErrorMessage(this, "Faltan datos requeridos", "Error");
+        }
+
+        String phone = txtPhone.getText();
+
+        visitor.setPhone(phone);
+    }
+
+    @Override
+    public void delete() {
+         if (visitor == null) {
+            UtilGui.showErrorMessage(this, "Debe especificar el visitante a eliminar", "Error");
+            return;
+        }
+        if (!list.remove(visitor)) {
+            JOptionPane.showMessageDialog(this, "No se elimino el registro");
+        }
+        clear();
+    }
+
+    @Override
+    public void search() {
+        DiaSearchVisitor frmSearch = new DiaSearchVisitor(this, true);
+        frmSearch.setList(list);
+        frmSearch.setVisible(true);
+        visitor = frmSearch.getVisitor();
+        if (visitor != null) {
+            showData();
+        }
+    }
+
+    @Override
+    public void showData() {
+          if (visitor == null) {
+            UtilGui.showErrorMessage(this, "Debe especificar el visitante a mostrar", "Error");
+            return;
+        }
+        txtId.setText(visitor.getId());
+        txtName.setText(visitor.getName());
+        txtBirthDate.setText(UtilDate.toString(visitor.getBirthDate()));
+        txtPhone.setText(visitor.getPhone());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -269,6 +392,7 @@ public class FrmVisitor extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -281,4 +405,6 @@ public class FrmVisitor extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JFormattedTextField txtPhone;
     // End of variables declaration//GEN-END:variables
+
+
 }

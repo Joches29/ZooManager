@@ -47,4 +47,9 @@ public class VisitorHashMapList implements List<Visitor> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    // se usa para el loadTable en DiaSearchVisitor
+    public HashMap<String, Visitor> getMap() {
+        return map;
+    }
+
 }
