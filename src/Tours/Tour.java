@@ -5,18 +5,21 @@
 package Tours;
 
 import Animals.Animal;
+import Lists.List;
 import Persons.Employees.Guide;
 import Persons.Visitors.Visitor;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
  * @author jprod
  */
 public class Tour {
+
     private Guide guide;
     LocalDate date;
-    private Visitor visitors[];
+    private ArrayList<Visitor> visitors;
     private Animal animals[];
 
     public Guide getGuide() {
@@ -26,16 +29,16 @@ public class Tour {
     public LocalDate getDate() {
         return date;
     }
-
-    public Visitor[] getVisitors() {
+    public ArrayList<Visitor> getVisitors() {
         return visitors;
     }
-
+    
     public Animal[] getAnimals() {
         return animals;
     }
 
-    public Tour(Guide guide, Visitor visitors[]) {
+
+    public Tour(Guide guide, ArrayList<Visitor> visitors) {
         this.guide = guide;
         this.date = LocalDate.now();
         this.visitors = visitors;
