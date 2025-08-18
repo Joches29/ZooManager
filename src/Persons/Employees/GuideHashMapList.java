@@ -47,4 +47,8 @@ public class GuideHashMapList implements List<Guide> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public HashMap<String, Guide> getMap() {
+        return map;
+    }
+
 }

@@ -40,22 +40,22 @@ public class Guide extends Employee {
         }
     }
     
-    public void doATour(Visitor visitors[]){
+    /*public void doATour(Visitor visitors[]){
         recordTour(visitors);
-    }
+    }*/
     
     public String giveInformation(Animal animal){
         return "Este es: "+ animal;
     }
     
-    private void recordTour(Visitor visitors[]){
+   /* private void recordTour(Visitor visitors[]){
         for (int i = 0; i < 30; i++) {
             if(tours[i]==null){
                 tours[i]=new Tour(this,visitors);
                 break;
             }
         }
-    }
+    }*/
 
     @Override
     public String toString() {
